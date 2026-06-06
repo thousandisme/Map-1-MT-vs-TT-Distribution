@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_70916bafe381b6b2001cdb94dd0c5674 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position:fixed; bottom:30px; left:30px; z-index:1000;
+     background:white; padding:14px 18px; border-radius:10px;
+     border:2px solid #5BB8C8; font-family:Arial; font-size:13px;
+     box-shadow:2px 2px 8px rgba(0,0,0,0.15);">
+  <b style="color:#2C5F6A;font-size:14px;">Map 1: MT vs TT Distribution</b>
+  <hr style="margin:8px 0;border-color:#A8D8E0">
+  <span style="display:inline-block;width:14px;height:14px;background:#5BB8C8;
+    border-radius:50%;margin-right:6px;vertical-align:middle;"></span>
+  <b>Modern Trade</b> (left bubble)<br>
+  <span style="display:inline-block;width:14px;height:14px;background:#2C5F6A;
+    border-radius:50%;margin-right:6px;vertical-align:middle;"></span>
+  <b>Traditional Trade</b> (right bubble)<br>
+  <i style="color:#888;font-size:11px;">Bubble size = order count</i><br>
+  <i style="color:#888;font-size:11px;">Hover for details</i>
+  <hr style="margin:8px 0;border-color:#A8D8E0">
+  MT covers <b>32 provinces</b> (national)<br>
+  TT covers <b>23 provinces</b> (Southern)
+</div>
+    
+            <div class="folium-map" id="map_70916bafe381b6b2001cdb94dd0c5674" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_70916bafe381b6b2001cdb94dd0c5674 = L.map(
+                "map_70916bafe381b6b2001cdb94dd0c5674",
+                {
+                    center: [16.0, 107.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f33329596a2bd67d2dd471d0901786e9 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f33329596a2bd67d2dd471d0901786e9.addTo(map_70916bafe381b6b2001cdb94dd0c5674);
+        
+    
+            var feature_group_571637f933ce68eb730f6c9a78d446ed = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_56bdb616066102a90093f76ce05a0a50 = L.circleMarker(
+                [10.386, 105.1852],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.137795275590551, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_1a7d63a9fbba0010bcfdcb64daa6ad00 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_58db875321a69589afa71cbecf28322c = $(`<div id="html_58db875321a69589afa71cbecf28322c" style="width: 100.0%; height: 100.0%;"><b>An Giang</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 9<br>CBM: 5</div>`)[0];
+                popup_1a7d63a9fbba0010bcfdcb64daa6ad00.setContent(html_58db875321a69589afa71cbecf28322c);
+            
+        
+
+        circle_marker_56bdb616066102a90093f76ce05a0a50.bindPopup(popup_1a7d63a9fbba0010bcfdcb64daa6ad00)
+        ;
+
+        
+    
+    
+            circle_marker_56bdb616066102a90093f76ce05a0a50.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>An Giang</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>9</b><br>CBM: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d06f9b1587060fa48d9e6c17a3349ea7 = L.circleMarker(
+                [21.1861, 105.8263],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.29090113735783, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_da435b0877c8aa16f9934d451f7cf9a0 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4a3e05024c5bd17beda373d0e5f67ad9 = $(`<div id="html_4a3e05024c5bd17beda373d0e5f67ad9" style="width: 100.0%; height: 100.0%;"><b>Bắc Ninh</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 19<br>CBM: 7</div>`)[0];
+                popup_da435b0877c8aa16f9934d451f7cf9a0.setContent(html_4a3e05024c5bd17beda373d0e5f67ad9);
+            
+        
+
+        circle_marker_d06f9b1587060fa48d9e6c17a3349ea7.bindPopup(popup_da435b0877c8aa16f9934d451f7cf9a0)
+        ;
+
+        
+    
+    
+            circle_marker_d06f9b1587060fa48d9e6c17a3349ea7.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Bắc Ninh</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>19</b><br>CBM: 7
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6762b1fcd7e3e09c4bbefe2ec93a6570 = L.circleMarker(
+                [9.1769, 104.9001],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.07655293088364, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_4f4b4e18abe19b2f3bd44d98ec445238 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b8d55c788e467910f989c7a9fcf86356 = $(`<div id="html_b8d55c788e467910f989c7a9fcf86356" style="width: 100.0%; height: 100.0%;"><b>Cà Mau</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 5<br>CBM: 2</div>`)[0];
+                popup_4f4b4e18abe19b2f3bd44d98ec445238.setContent(html_b8d55c788e467910f989c7a9fcf86356);
+            
+        
+
+        circle_marker_6762b1fcd7e3e09c4bbefe2ec93a6570.bindPopup(popup_4f4b4e18abe19b2f3bd44d98ec445238)
+        ;
+
+        
+    
+    
+            circle_marker_6762b1fcd7e3e09c4bbefe2ec93a6570.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Cà Mau</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>5</b><br>CBM: 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_67a48dd6b573fece88ae500f90006242 = L.circleMarker(
+                [10.0452, 105.4969],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.020997375328085, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_042ea855ab3b515332611ae914cbf3d4 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_185e5d27dc3721e615a86628e1b57d07 = $(`<div id="html_185e5d27dc3721e615a86628e1b57d07" style="width: 100.0%; height: 100.0%;"><b>Cần Thơ</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 132<br>CBM: 916</div>`)[0];
+                popup_042ea855ab3b515332611ae914cbf3d4.setContent(html_185e5d27dc3721e615a86628e1b57d07);
+            
+        
+
+        circle_marker_67a48dd6b573fece88ae500f90006242.bindPopup(popup_042ea855ab3b515332611ae914cbf3d4)
+        ;
+
+        
+    
+    
+            circle_marker_67a48dd6b573fece88ae500f90006242.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Cần Thơ</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>132</b><br>CBM: 916
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_928a44227aa0e482781a713be3149a40 = L.circleMarker(
+                [13.9833, 107.75],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.091863517060368, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_d3f8c7b05524f9b0c853d4302f8bfb89 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_fe191d6f7351a3673abd5ca7fead70d9 = $(`<div id="html_fe191d6f7351a3673abd5ca7fead70d9" style="width: 100.0%; height: 100.0%;"><b>Gia Lai</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 6<br>CBM: 3</div>`)[0];
+                popup_d3f8c7b05524f9b0c853d4302f8bfb89.setContent(html_fe191d6f7351a3673abd5ca7fead70d9);
+            
+        
+
+        circle_marker_928a44227aa0e482781a713be3149a40.bindPopup(popup_d3f8c7b05524f9b0c853d4302f8bfb89)
+        ;
+
+        
+    
+    
+            circle_marker_928a44227aa0e482781a713be3149a40.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Gia Lai</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>6</b><br>CBM: 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aba04df1726550b90e641ea9ff9e272e = L.circleMarker(
+                [21.0285, 105.6042],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.353018372703412, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_f8b90e27dcaa9090a6effa8f0c80b209 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_1412282d18069c57c10f683a1931c54f = $(`<div id="html_1412282d18069c57c10f683a1931c54f" style="width: 100.0%; height: 100.0%;"><b>Hà Nội</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 219<br>CBM: 590</div>`)[0];
+                popup_f8b90e27dcaa9090a6effa8f0c80b209.setContent(html_1412282d18069c57c10f683a1931c54f);
+            
+        
+
+        circle_marker_aba04df1726550b90e641ea9ff9e272e.bindPopup(popup_f8b90e27dcaa9090a6effa8f0c80b209)
+        ;
+
+        
+    
+    
+            circle_marker_aba04df1726550b90e641ea9ff9e272e.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Hà Nội</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>219</b><br>CBM: 590
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c3fd61d9271ebd9943f99db1f3faf068 = L.circleMarker(
+                [18.3421, 105.638],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.107174103237095, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_9033d75a681cf6c2f7d7578d85b0e205 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_0a1d63f37bae14853b05c13ef7c9d521 = $(`<div id="html_0a1d63f37bae14853b05c13ef7c9d521" style="width: 100.0%; height: 100.0%;"><b>Hà Tĩnh</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 7<br>CBM: 3</div>`)[0];
+                popup_9033d75a681cf6c2f7d7578d85b0e205.setContent(html_0a1d63f37bae14853b05c13ef7c9d521);
+            
+        
+
+        circle_marker_c3fd61d9271ebd9943f99db1f3faf068.bindPopup(popup_9033d75a681cf6c2f7d7578d85b0e205)
+        ;
+
+        
+    
+    
+            circle_marker_c3fd61d9271ebd9943f99db1f3faf068.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Hà Tĩnh</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>7</b><br>CBM: 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_447ee95b82a568a2a6106c48508cb96b = L.circleMarker(
+                [20.646, 105.801],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.260279965004375, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_10c04b99911ab19bee166f392c647b3d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7a4dad84c8f6286c8ae0cb444c0ed1c6 = $(`<div id="html_7a4dad84c8f6286c8ae0cb444c0ed1c6" style="width: 100.0%; height: 100.0%;"><b>Hưng Yên</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 17<br>CBM: 7</div>`)[0];
+                popup_10c04b99911ab19bee166f392c647b3d.setContent(html_7a4dad84c8f6286c8ae0cb444c0ed1c6);
+            
+        
+
+        circle_marker_447ee95b82a568a2a6106c48508cb96b.bindPopup(popup_10c04b99911ab19bee166f392c647b3d)
+        ;
+
+        
+    
+    
+            circle_marker_447ee95b82a568a2a6106c48508cb96b.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Hưng Yên</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>17</b><br>CBM: 7
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cadf323fc49f05bb0cd6482aca5cf2f5 = L.circleMarker(
+                [20.8449, 106.4381],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.546369203849519, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_8d3e2c796b88cacbe92b0c93bd41028a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_71e70a522bbf31c108e64dcfddaaaa37 = $(`<div id="html_71e70a522bbf31c108e64dcfddaaaa37" style="width: 100.0%; height: 100.0%;"><b>Hải Phòng</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 101<br>CBM: 371</div>`)[0];
+                popup_8d3e2c796b88cacbe92b0c93bd41028a.setContent(html_71e70a522bbf31c108e64dcfddaaaa37);
+            
+        
+
+        circle_marker_cadf323fc49f05bb0cd6482aca5cf2f5.bindPopup(popup_8d3e2c796b88cacbe92b0c93bd41028a)
+        ;
+
+        
+    
+    
+            circle_marker_cadf323fc49f05bb0cd6482aca5cf2f5.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Hải Phòng</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>101</b><br>CBM: 371
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8dacbd7fd28d0f2c26680856a066874a = L.circleMarker(
+                [12.2388, 108.9467],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.592300962379703, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_213818a49d830150c1fbe1f224737b57 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4a2c6d0c8146e54c5e86979698ddc85b = $(`<div id="html_4a2c6d0c8146e54c5e86979698ddc85b" style="width: 100.0%; height: 100.0%;"><b>Khánh Hòa</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 104<br>CBM: 524</div>`)[0];
+                popup_213818a49d830150c1fbe1f224737b57.setContent(html_4a2c6d0c8146e54c5e86979698ddc85b);
+            
+        
+
+        circle_marker_8dacbd7fd28d0f2c26680856a066874a.bindPopup(popup_213818a49d830150c1fbe1f224737b57)
+        ;
+
+        
+    
+    
+            circle_marker_8dacbd7fd28d0f2c26680856a066874a.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Khánh Hòa</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>104</b><br>CBM: 524
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fc5476c9b06ada27857ecf889b5e952c = L.circleMarker(
+                [22.48, 103.725],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.199037620297463, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_a45a9fdfdd2a7bb8188cb00187f5a5cd = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f710b42028d8919cdfbe15d32d3659cc = $(`<div id="html_f710b42028d8919cdfbe15d32d3659cc" style="width: 100.0%; height: 100.0%;"><b>Lào Cai</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 13<br>CBM: 5</div>`)[0];
+                popup_a45a9fdfdd2a7bb8188cb00187f5a5cd.setContent(html_f710b42028d8919cdfbe15d32d3659cc);
+            
+        
+
+        circle_marker_fc5476c9b06ada27857ecf889b5e952c.bindPopup(popup_a45a9fdfdd2a7bb8188cb00187f5a5cd)
+        ;
+
+        
+    
+    
+            circle_marker_fc5476c9b06ada27857ecf889b5e952c.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Lào Cai</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>13</b><br>CBM: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_621485da38e4ad26345745bf792f92f1 = L.circleMarker(
+                [11.9465, 108.1919],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.015310586176728, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_ee58e9db21219774a73d663fb1a69e8a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_679184844ba1407462f1864b4c79c2df = $(`<div id="html_679184844ba1407462f1864b4c79c2df" style="width: 100.0%; height: 100.0%;"><b>Lâm Đồng</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 1<br>CBM: 1</div>`)[0];
+                popup_ee58e9db21219774a73d663fb1a69e8a.setContent(html_679184844ba1407462f1864b4c79c2df);
+            
+        
+
+        circle_marker_621485da38e4ad26345745bf792f92f1.bindPopup(popup_ee58e9db21219774a73d663fb1a69e8a)
+        ;
+
+        
+    
+    
+            circle_marker_621485da38e4ad26345745bf792f92f1.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Lâm Đồng</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>1</b><br>CBM: 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_42068115f0a7a24c09a6ec603d303c3c = L.circleMarker(
+                [21.853, 106.511],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.107174103237095, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_b6c9c811d857b50728daf83cb57b9aeb = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_8a735d92bb4875537d4a3370d4995b4a = $(`<div id="html_8a735d92bb4875537d4a3370d4995b4a" style="width: 100.0%; height: 100.0%;"><b>Lạng Sơn</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 7<br>CBM: 1</div>`)[0];
+                popup_b6c9c811d857b50728daf83cb57b9aeb.setContent(html_8a735d92bb4875537d4a3370d4995b4a);
+            
+        
+
+        circle_marker_42068115f0a7a24c09a6ec603d303c3c.bindPopup(popup_b6c9c811d857b50728daf83cb57b9aeb)
+        ;
+
+        
+    
+    
+            circle_marker_42068115f0a7a24c09a6ec603d303c3c.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Lạng Sơn</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>7</b><br>CBM: 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6170958dcbba0acb6422b67fca5636b4 = L.circleMarker(
+                [18.6796, 105.4313],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.229658792650919, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_b62646ecebb606ff9adb4d215dec1035 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d29e3310b3a6d7175e994a663dd4d67a = $(`<div id="html_d29e3310b3a6d7175e994a663dd4d67a" style="width: 100.0%; height: 100.0%;"><b>Nghệ An</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 15<br>CBM: 5</div>`)[0];
+                popup_b62646ecebb606ff9adb4d215dec1035.setContent(html_d29e3310b3a6d7175e994a663dd4d67a);
+            
+        
+
+        circle_marker_6170958dcbba0acb6422b67fca5636b4.bindPopup(popup_b62646ecebb606ff9adb4d215dec1035)
+        ;
+
+        
+    
+    
+            circle_marker_6170958dcbba0acb6422b67fca5636b4.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Nghệ An</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>15</b><br>CBM: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9372673459028fd638da080b95cb9b4b = L.circleMarker(
+                [20.254, 105.725],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.535870516185477, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_f56c15d2826967f98d4583d1b047267a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f851c9f0f0cef96a524555b01556fb91 = $(`<div id="html_f851c9f0f0cef96a524555b01556fb91" style="width: 100.0%; height: 100.0%;"><b>Ninh Bình</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 35<br>CBM: 12</div>`)[0];
+                popup_f56c15d2826967f98d4583d1b047267a.setContent(html_f851c9f0f0cef96a524555b01556fb91);
+            
+        
+
+        circle_marker_9372673459028fd638da080b95cb9b4b.bindPopup(popup_f56c15d2826967f98d4583d1b047267a)
+        ;
+
+        
+    
+    
+            circle_marker_9372673459028fd638da080b95cb9b4b.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Ninh Bình</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>35</b><br>CBM: 12
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bbcff923880bf55661e37a49fde8bd29 = L.circleMarker(
+                [21.268, 104.954],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.148293963254593, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_851e42fb41a34b00bcb4811af17de775 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_8c71792b278ea7eae85b19c910b17395 = $(`<div id="html_8c71792b278ea7eae85b19c910b17395" style="width: 100.0%; height: 100.0%;"><b>Phú Thọ</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 75<br>CBM: 158</div>`)[0];
+                popup_851e42fb41a34b00bcb4811af17de775.setContent(html_8c71792b278ea7eae85b19c910b17395);
+            
+        
+
+        circle_marker_bbcff923880bf55661e37a49fde8bd29.bindPopup(popup_851e42fb41a34b00bcb4811af17de775)
+        ;
+
+        
+    
+    
+            circle_marker_bbcff923880bf55661e37a49fde8bd29.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Phú Thọ</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>75</b><br>CBM: 158
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0137d63413d0315e95b2d5dcae60396e = L.circleMarker(
+                [15.1194, 108.5422],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.061242344706912, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_fd884bba4d60ee7031a2bcc2ae672b00 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_3990c9e3f29fabfe7982f7cf2a67dc09 = $(`<div id="html_3990c9e3f29fabfe7982f7cf2a67dc09" style="width: 100.0%; height: 100.0%;"><b>Quảng Ngãi</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 4<br>CBM: 3</div>`)[0];
+                popup_fd884bba4d60ee7031a2bcc2ae672b00.setContent(html_3990c9e3f29fabfe7982f7cf2a67dc09);
+            
+        
+
+        circle_marker_0137d63413d0315e95b2d5dcae60396e.bindPopup(popup_fd884bba4d60ee7031a2bcc2ae672b00)
+        ;
+
+        
+    
+    
+            circle_marker_0137d63413d0315e95b2d5dcae60396e.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Quảng Ngãi</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>4</b><br>CBM: 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1f7e592084a7b9207503b19e5c9f4b76 = L.circleMarker(
+                [21.0064, 107.0425],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.321522309711286, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_0e7dc4ec81f007db3debe6f68639a31f = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_1bf0d527b4896bc15bb4455336527a6c = $(`<div id="html_1bf0d527b4896bc15bb4455336527a6c" style="width: 100.0%; height: 100.0%;"><b>Quảng Ninh</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 21<br>CBM: 28</div>`)[0];
+                popup_0e7dc4ec81f007db3debe6f68639a31f.setContent(html_1bf0d527b4896bc15bb4455336527a6c);
+            
+        
+
+        circle_marker_1f7e592084a7b9207503b19e5c9f4b76.bindPopup(popup_0e7dc4ec81f007db3debe6f68639a31f)
+        ;
+
+        
+    
+    
+            circle_marker_1f7e592084a7b9207503b19e5c9f4b76.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Quảng Ninh</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>21</b><br>CBM: 28
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_19cdbfba3ce9c338b9fa496ee838e3ba = L.circleMarker(
+                [16.7403, 106.9357],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.244969378827647, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_c2fd6c958f074854215598ea878872a8 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b7f2ef6e7def6c51381c470507270cc9 = $(`<div id="html_b7f2ef6e7def6c51381c470507270cc9" style="width: 100.0%; height: 100.0%;"><b>Quảng Trị</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 16<br>CBM: 6</div>`)[0];
+                popup_c2fd6c958f074854215598ea878872a8.setContent(html_b7f2ef6e7def6c51381c470507270cc9);
+            
+        
+
+        circle_marker_19cdbfba3ce9c338b9fa496ee838e3ba.bindPopup(popup_c2fd6c958f074854215598ea878872a8)
+        ;
+
+        
+    
+    
+            circle_marker_19cdbfba3ce9c338b9fa496ee838e3ba.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Quảng Trị</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>16</b><br>CBM: 6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9f5524289bb9251bbdaa4e5db8bcf5f7 = L.circleMarker(
+                [21.102, 103.479],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.045931758530184, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_e9c083f319f72868656f387c209cdeee = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_dd3cfa4df51d61906ffa5d5db0ae9a8e = $(`<div id="html_dd3cfa4df51d61906ffa5d5db0ae9a8e" style="width: 100.0%; height: 100.0%;"><b>Sơn La</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 3<br>CBM: 1</div>`)[0];
+                popup_e9c083f319f72868656f387c209cdeee.setContent(html_dd3cfa4df51d61906ffa5d5db0ae9a8e);
+            
+        
+
+        circle_marker_9f5524289bb9251bbdaa4e5db8bcf5f7.bindPopup(popup_e9c083f319f72868656f387c209cdeee)
+        ;
+
+        
+    
+    
+            circle_marker_9f5524289bb9251bbdaa4e5db8bcf5f7.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Sơn La</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>3</b><br>CBM: 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a7afb8439d76b8fbeb6fa71871b4d34f = L.circleMarker(
+                [10.7769, 106.4509],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.615923009623796, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_015e777635850e8ab9a5270f89257e4b = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_92a9f18b521f2665d63aeec7eaa8ccc8 = $(`<div id="html_92a9f18b521f2665d63aeec7eaa8ccc8" style="width: 100.0%; height: 100.0%;"><b>TP. Hồ Chí Minh</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 824<br>CBM: 3,696</div>`)[0];
+                popup_015e777635850e8ab9a5270f89257e4b.setContent(html_92a9f18b521f2665d63aeec7eaa8ccc8);
+            
+        
+
+        circle_marker_a7afb8439d76b8fbeb6fa71871b4d34f.bindPopup(popup_015e777635850e8ab9a5270f89257e4b)
+        ;
+
+        
+    
+    
+            circle_marker_a7afb8439d76b8fbeb6fa71871b4d34f.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>TP. Hồ Chí Minh</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>824</b><br>CBM: 3,696
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9aa1a6c57b1339b7300ea738ffcd4125 = L.circleMarker(
+                [19.8078, 105.5258],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.194225721784777, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_c8264267076ade18c48fdc2042b2f355 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f5bdbac8a1524fb385d52aaef45dace7 = $(`<div id="html_f5bdbac8a1524fb385d52aaef45dace7" style="width: 100.0%; height: 100.0%;"><b>Thanh Hóa</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 78<br>CBM: 213</div>`)[0];
+                popup_c8264267076ade18c48fdc2042b2f355.setContent(html_f5bdbac8a1524fb385d52aaef45dace7);
+            
+        
+
+        circle_marker_9aa1a6c57b1339b7300ea738ffcd4125.bindPopup(popup_c8264267076ade18c48fdc2042b2f355)
+        ;
+
+        
+    
+    
+            circle_marker_9aa1a6c57b1339b7300ea738ffcd4125.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Thanh Hóa</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>78</b><br>CBM: 213
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_05e5c9d1853140c234d2b43659eb32f2 = L.circleMarker(
+                [21.567, 105.575],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.275590551181103, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_effa1bd0aa56d68e780e986f1fb0b302 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5a74a26f1314ad5eb607acd70643cb0e = $(`<div id="html_5a74a26f1314ad5eb607acd70643cb0e" style="width: 100.0%; height: 100.0%;"><b>Thái Nguyên</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 18<br>CBM: 4</div>`)[0];
+                popup_effa1bd0aa56d68e780e986f1fb0b302.setContent(html_5a74a26f1314ad5eb607acd70643cb0e);
+            
+        
+
+        circle_marker_05e5c9d1853140c234d2b43659eb32f2.bindPopup(popup_effa1bd0aa56d68e780e986f1fb0b302)
+        ;
+
+        
+    
+    
+            circle_marker_05e5c9d1853140c234d2b43659eb32f2.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Thái Nguyên</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>18</b><br>CBM: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c576baf5789de33de32c309fe9a9c06c = L.circleMarker(
+                [16.3333, 107.3333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.107174103237095, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_a970db57714becbe40ecf65a4cce3cec = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_08c1e96d8f70bbb63e98cd7de8324009 = $(`<div id="html_08c1e96d8f70bbb63e98cd7de8324009" style="width: 100.0%; height: 100.0%;"><b>Thừa Thiên Huế</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 7<br>CBM: 4</div>`)[0];
+                popup_a970db57714becbe40ecf65a4cce3cec.setContent(html_08c1e96d8f70bbb63e98cd7de8324009);
+            
+        
+
+        circle_marker_c576baf5789de33de32c309fe9a9c06c.bindPopup(popup_a970db57714becbe40ecf65a4cce3cec)
+        ;
+
+        
+    
+    
+            circle_marker_c576baf5789de33de32c309fe9a9c06c.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Thừa Thiên Huế</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>7</b><br>CBM: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a858e9cc0bb69146444d43baf13c71d5 = L.circleMarker(
+                [21.824, 104.968],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.137795275590551, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_9ff9d7ace3e472661e9734b5e1f13436 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_3bda7f1be7bdcca509fb977ac346d6d6 = $(`<div id="html_3bda7f1be7bdcca509fb977ac346d6d6" style="width: 100.0%; height: 100.0%;"><b>Tuyên Quang</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 9<br>CBM: 4</div>`)[0];
+                popup_9ff9d7ace3e472661e9734b5e1f13436.setContent(html_3bda7f1be7bdcca509fb977ac346d6d6);
+            
+        
+
+        circle_marker_a858e9cc0bb69146444d43baf13c71d5.bindPopup(popup_9ff9d7ace3e472661e9734b5e1f13436)
+        ;
+
+        
+    
+    
+            circle_marker_a858e9cc0bb69146444d43baf13c71d5.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Tuyên Quang</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>9</b><br>CBM: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_34d0b5f4eae1c02138559eca31a78708 = L.circleMarker(
+                [11.3351, 105.8599],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.030621172353456, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_ecf9ce1ae9185947c02c12d1b16d68e3 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_8fea1627b6072ff6d9ba7b8ced4ff86d = $(`<div id="html_8fea1627b6072ff6d9ba7b8ced4ff86d" style="width: 100.0%; height: 100.0%;"><b>Tây Ninh</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 2<br>CBM: 1</div>`)[0];
+                popup_ecf9ce1ae9185947c02c12d1b16d68e3.setContent(html_8fea1627b6072ff6d9ba7b8ced4ff86d);
+            
+        
+
+        circle_marker_34d0b5f4eae1c02138559eca31a78708.bindPopup(popup_ecf9ce1ae9185947c02c12d1b16d68e3)
+        ;
+
+        
+    
+    
+            circle_marker_34d0b5f4eae1c02138559eca31a78708.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Tây Ninh</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>2</b><br>CBM: 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_57f32f6ab5cc8e55ec3017940248567e = L.circleMarker(
+                [10.2537, 105.7222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.107174103237095, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_7816a15e9340a8b17ecc720edb081d3d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_3b06d2934ba2ab9e9e6d969ad76d8b06 = $(`<div id="html_3b06d2934ba2ab9e9e6d969ad76d8b06" style="width: 100.0%; height: 100.0%;"><b>Vĩnh Long</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 7<br>CBM: 3</div>`)[0];
+                popup_7816a15e9340a8b17ecc720edb081d3d.setContent(html_3b06d2934ba2ab9e9e6d969ad76d8b06);
+            
+        
+
+        circle_marker_57f32f6ab5cc8e55ec3017940248567e.bindPopup(popup_7816a15e9340a8b17ecc720edb081d3d)
+        ;
+
+        
+    
+    
+            circle_marker_57f32f6ab5cc8e55ec3017940248567e.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Vĩnh Long</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>7</b><br>CBM: 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0ab0106d63ec44daf1019b0af7f0dd3a = L.circleMarker(
+                [21.386, 102.766],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.030621172353456, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_8f354798946607744e2384ef2c8de1bd = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_aae1f84d491c9da62d13f53c47e334f3 = $(`<div id="html_aae1f84d491c9da62d13f53c47e334f3" style="width: 100.0%; height: 100.0%;"><b>Điện Biên</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 2<br>CBM: 1</div>`)[0];
+                popup_8f354798946607744e2384ef2c8de1bd.setContent(html_aae1f84d491c9da62d13f53c47e334f3);
+            
+        
+
+        circle_marker_0ab0106d63ec44daf1019b0af7f0dd3a.bindPopup(popup_8f354798946607744e2384ef2c8de1bd)
+        ;
+
+        
+    
+    
+            circle_marker_0ab0106d63ec44daf1019b0af7f0dd3a.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Điện Biên</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>2</b><br>CBM: 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_79ccf27dfc5e454ce4a6aa9f072f981b = L.circleMarker(
+                [16.0544, 107.9522],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.020997375328085, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_97683f3a4b4035c68bb7f63fdea8902c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7798502b64739f7349c878d7468628e4 = $(`<div id="html_7798502b64739f7349c878d7468628e4" style="width: 100.0%; height: 100.0%;"><b>Đà Nẵng</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 132<br>CBM: 713</div>`)[0];
+                popup_97683f3a4b4035c68bb7f63fdea8902c.setContent(html_7798502b64739f7349c878d7468628e4);
+            
+        
+
+        circle_marker_79ccf27dfc5e454ce4a6aa9f072f981b.bindPopup(popup_97683f3a4b4035c68bb7f63fdea8902c)
+        ;
+
+        
+    
+    
+            circle_marker_79ccf27dfc5e454ce4a6aa9f072f981b.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Đà Nẵng</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>132</b><br>CBM: 713
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fab5d872e003050c3934bc0c5498ba7b = L.circleMarker(
+                [12.71, 107.9878],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.531058617672791, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_e799ae7212689ddf55184a7e85df2b72 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_dbf338367d6d383bb740f9c5eeee5cae = $(`<div id="html_dbf338367d6d383bb740f9c5eeee5cae" style="width: 100.0%; height: 100.0%;"><b>Đắk Lắk</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 100<br>CBM: 198</div>`)[0];
+                popup_e799ae7212689ddf55184a7e85df2b72.setContent(html_dbf338367d6d383bb740f9c5eeee5cae);
+            
+        
+
+        circle_marker_fab5d872e003050c3934bc0c5498ba7b.bindPopup(popup_e799ae7212689ddf55184a7e85df2b72)
+        ;
+
+        
+    
+    
+            circle_marker_fab5d872e003050c3934bc0c5498ba7b.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Đắk Lắk</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>100</b><br>CBM: 198
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2514039476a1e799677d25221a0c3b4a = L.circleMarker(
+                [10.9686, 106.9176],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.275590551181103, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_fa2e16dfb1a3fb3bbd355f3fbb5babbc = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2a982917d78b371c3b678186c12e113a = $(`<div id="html_2a982917d78b371c3b678186c12e113a" style="width: 100.0%; height: 100.0%;"><b>Đồng Nai</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 18<br>CBM: 11</div>`)[0];
+                popup_fa2e16dfb1a3fb3bbd355f3fbb5babbc.setContent(html_2a982917d78b371c3b678186c12e113a);
+            
+        
+
+        circle_marker_2514039476a1e799677d25221a0c3b4a.bindPopup(popup_fa2e16dfb1a3fb3bbd355f3fbb5babbc)
+        ;
+
+        
+    
+    
+            circle_marker_2514039476a1e799677d25221a0c3b4a.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Đồng Nai</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>18</b><br>CBM: 11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_13e3d30b59ff7cbd42271f9041372114 = L.circleMarker(
+                [10.4938, 105.4382],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5BB8C8", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.806649168853893, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_571637f933ce68eb730f6c9a78d446ed);
+        
+    
+        var popup_48ec4e68244a3c876833fc3c0ef2a578 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_e8b7d8b467e99c3e294f08d36a5461ee = $(`<div id="html_e8b7d8b467e99c3e294f08d36a5461ee" style="width: 100.0%; height: 100.0%;"><b>Đồng Tháp</b><br><span style='color:#5BB8C8'>■</span> MT Orders: 118<br>CBM: 749</div>`)[0];
+                popup_48ec4e68244a3c876833fc3c0ef2a578.setContent(html_e8b7d8b467e99c3e294f08d36a5461ee);
+            
+        
+
+        circle_marker_13e3d30b59ff7cbd42271f9041372114.bindPopup(popup_48ec4e68244a3c876833fc3c0ef2a578)
+        ;
+
+        
+    
+    
+            circle_marker_13e3d30b59ff7cbd42271f9041372114.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Đồng Tháp</b><br><b style='color:#5BB8C8'>Modern Trade</b><br>Orders: <b>118</b><br>CBM: 749
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_571637f933ce68eb730f6c9a78d446ed.addTo(map_70916bafe381b6b2001cdb94dd0c5674);
+        
+    
+            var feature_group_d886c4be4276f1e25a0bbcdf0235711f = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_bf2edaa46fe217c3b28e41aef6dd3c78 = L.circleMarker(
+                [10.386, 105.6852],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.546369203849519, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_f35b5ea56367c77ae9dd692f35dc6285 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_470c54389d88005a63a4fe6ac1e886b8 = $(`<div id="html_470c54389d88005a63a4fe6ac1e886b8" style="width: 100.0%; height: 100.0%;"><b>An Giang</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 101<br>CBM: 173</div>`)[0];
+                popup_f35b5ea56367c77ae9dd692f35dc6285.setContent(html_470c54389d88005a63a4fe6ac1e886b8);
+            
+        
+
+        circle_marker_bf2edaa46fe217c3b28e41aef6dd3c78.bindPopup(popup_f35b5ea56367c77ae9dd692f35dc6285)
+        ;
+
+        
+    
+    
+            circle_marker_bf2edaa46fe217c3b28e41aef6dd3c78.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>An Giang</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>101</b><br>CBM: 173
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a1cc13ba7bdf5b973980baf1a813e095 = L.circleMarker(
+                [21.1861, 106.3263],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.015310586176728, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_8c87a8a4e80f52da92b45966436591cd = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_841b5a05a22d9e91f14e556fc8e48792 = $(`<div id="html_841b5a05a22d9e91f14e556fc8e48792" style="width: 100.0%; height: 100.0%;"><b>Bắc Ninh</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 1<br>CBM: 0</div>`)[0];
+                popup_8c87a8a4e80f52da92b45966436591cd.setContent(html_841b5a05a22d9e91f14e556fc8e48792);
+            
+        
+
+        circle_marker_a1cc13ba7bdf5b973980baf1a813e095.bindPopup(popup_8c87a8a4e80f52da92b45966436591cd)
+        ;
+
+        
+    
+    
+            circle_marker_a1cc13ba7bdf5b973980baf1a813e095.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Bắc Ninh</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>1</b><br>CBM: 0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fbb894c8f2a5a7295b3909f271753fa1 = L.circleMarker(
+                [9.1769, 105.4001],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.459317585301838, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_2dcb975106e8480baa1e93959d22e522 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5dbd0f4bb44c0ebb5a38902393a2d649 = $(`<div id="html_5dbd0f4bb44c0ebb5a38902393a2d649" style="width: 100.0%; height: 100.0%;"><b>Cà Mau</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 30<br>CBM: 25</div>`)[0];
+                popup_2dcb975106e8480baa1e93959d22e522.setContent(html_5dbd0f4bb44c0ebb5a38902393a2d649);
+            
+        
+
+        circle_marker_fbb894c8f2a5a7295b3909f271753fa1.bindPopup(popup_2dcb975106e8480baa1e93959d22e522)
+        ;
+
+        
+    
+    
+            circle_marker_fbb894c8f2a5a7295b3909f271753fa1.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Cà Mau</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>30</b><br>CBM: 25
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_213bd44e625a9d7d47aeccbdd18e4ce0 = L.circleMarker(
+                [10.0452, 105.9969],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.327209098862642, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_c59141ab2a70cfe38dd8b434449f25e0 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_830bdce5a0c46ca96def1c9e900581f5 = $(`<div id="html_830bdce5a0c46ca96def1c9e900581f5" style="width: 100.0%; height: 100.0%;"><b>Cần Thơ</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 152<br>CBM: 254</div>`)[0];
+                popup_c59141ab2a70cfe38dd8b434449f25e0.setContent(html_830bdce5a0c46ca96def1c9e900581f5);
+            
+        
+
+        circle_marker_213bd44e625a9d7d47aeccbdd18e4ce0.bindPopup(popup_c59141ab2a70cfe38dd8b434449f25e0)
+        ;
+
+        
+    
+    
+            circle_marker_213bd44e625a9d7d47aeccbdd18e4ce0.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Cần Thơ</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>152</b><br>CBM: 254
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ed1b5f952bd6e9689c0fc17826b9cdc8 = L.circleMarker(
+                [13.9833, 108.25],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.995188101487314, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_dfaa7cfcf6c48fb0ae802943cfca547b = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_225a5c5b0e3cbe92da142f116464b4c9 = $(`<div id="html_225a5c5b0e3cbe92da142f116464b4c9" style="width: 100.0%; height: 100.0%;"><b>Gia Lai</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 65<br>CBM: 127</div>`)[0];
+                popup_dfaa7cfcf6c48fb0ae802943cfca547b.setContent(html_225a5c5b0e3cbe92da142f116464b4c9);
+            
+        
+
+        circle_marker_ed1b5f952bd6e9689c0fc17826b9cdc8.bindPopup(popup_dfaa7cfcf6c48fb0ae802943cfca547b)
+        ;
+
+        
+    
+    
+            circle_marker_ed1b5f952bd6e9689c0fc17826b9cdc8.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Gia Lai</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>65</b><br>CBM: 127
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_68f2b43d49f90ead90eef7e22b4a1883 = L.circleMarker(
+                [21.0285, 106.1042],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.489938757655293, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_3e8f886b4f9c45e144533b17c289d4a0 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2083013e165b3ba52f911b65f56559fc = $(`<div id="html_2083013e165b3ba52f911b65f56559fc" style="width: 100.0%; height: 100.0%;"><b>Hà Nội</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 32<br>CBM: 77</div>`)[0];
+                popup_3e8f886b4f9c45e144533b17c289d4a0.setContent(html_2083013e165b3ba52f911b65f56559fc);
+            
+        
+
+        circle_marker_68f2b43d49f90ead90eef7e22b4a1883.bindPopup(popup_3e8f886b4f9c45e144533b17c289d4a0)
+        ;
+
+        
+    
+    
+            circle_marker_68f2b43d49f90ead90eef7e22b4a1883.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Hà Nội</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>32</b><br>CBM: 77
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_29df9762b52a60acae94451a9d2459e1 = L.circleMarker(
+                [20.646, 106.301],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.061242344706912, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_a5457a969d8ba1c1f68245a265b8798c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4a338a37adf873d28a23aef09c81ea45 = $(`<div id="html_4a338a37adf873d28a23aef09c81ea45" style="width: 100.0%; height: 100.0%;"><b>Hưng Yên</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 4<br>CBM: 17</div>`)[0];
+                popup_a5457a969d8ba1c1f68245a265b8798c.setContent(html_4a338a37adf873d28a23aef09c81ea45);
+            
+        
+
+        circle_marker_29df9762b52a60acae94451a9d2459e1.bindPopup(popup_a5457a969d8ba1c1f68245a265b8798c)
+        ;
+
+        
+    
+    
+            circle_marker_29df9762b52a60acae94451a9d2459e1.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Hưng Yên</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>4</b><br>CBM: 17
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b76959cf13ecafb0fa3aef5843a4a38f = L.circleMarker(
+                [12.2388, 109.4467],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.169291338582678, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_51cbe842770b1382d41fee9f81001e51 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_822f39be230796b1ae52d5aa8bc42943 = $(`<div id="html_822f39be230796b1ae52d5aa8bc42943" style="width: 100.0%; height: 100.0%;"><b>Khánh Hòa</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 207<br>CBM: 441</div>`)[0];
+                popup_51cbe842770b1382d41fee9f81001e51.setContent(html_822f39be230796b1ae52d5aa8bc42943);
+            
+        
+
+        circle_marker_b76959cf13ecafb0fa3aef5843a4a38f.bindPopup(popup_51cbe842770b1382d41fee9f81001e51)
+        ;
+
+        
+    
+    
+            circle_marker_b76959cf13ecafb0fa3aef5843a4a38f.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Khánh Hòa</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>207</b><br>CBM: 441
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_51a859078eca4808d1a91fa0cabb9efa = L.circleMarker(
+                [22.48, 104.225],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.030621172353456, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_26a56490bc857c21c7883214126bcd02 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_3953856f0a163ac53b749e38b91875fd = $(`<div id="html_3953856f0a163ac53b749e38b91875fd" style="width: 100.0%; height: 100.0%;"><b>Lào Cai</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 2<br>CBM: 4</div>`)[0];
+                popup_26a56490bc857c21c7883214126bcd02.setContent(html_3953856f0a163ac53b749e38b91875fd);
+            
+        
+
+        circle_marker_51a859078eca4808d1a91fa0cabb9efa.bindPopup(popup_26a56490bc857c21c7883214126bcd02)
+        ;
+
+        
+    
+    
+            circle_marker_51a859078eca4808d1a91fa0cabb9efa.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Lào Cai</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>2</b><br>CBM: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bf0eeb56145339004b5b2e8bda99f6db = L.circleMarker(
+                [11.9465, 108.6919],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.990376202974629, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_a2d5c8b3d3b4d56be3da20997743ef7c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_66bae81c60865a6f2239956b409f5d2e = $(`<div id="html_66bae81c60865a6f2239956b409f5d2e" style="width: 100.0%; height: 100.0%;"><b>Lâm Đồng</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 130<br>CBM: 245</div>`)[0];
+                popup_a2d5c8b3d3b4d56be3da20997743ef7c.setContent(html_66bae81c60865a6f2239956b409f5d2e);
+            
+        
+
+        circle_marker_bf0eeb56145339004b5b2e8bda99f6db.bindPopup(popup_a2d5c8b3d3b4d56be3da20997743ef7c)
+        ;
+
+        
+    
+    
+            circle_marker_bf0eeb56145339004b5b2e8bda99f6db.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Lâm Đồng</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>130</b><br>CBM: 245
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0c9a0e58caf4f479105140cf5ef642b8 = L.circleMarker(
+                [18.6796, 105.9313],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.07655293088364, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_32a726c5d6fd7cfceb303105b4dbabca = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5ff4f78141dc14e46394339c327b5a14 = $(`<div id="html_5ff4f78141dc14e46394339c327b5a14" style="width: 100.0%; height: 100.0%;"><b>Nghệ An</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 5<br>CBM: 4</div>`)[0];
+                popup_32a726c5d6fd7cfceb303105b4dbabca.setContent(html_5ff4f78141dc14e46394339c327b5a14);
+            
+        
+
+        circle_marker_0c9a0e58caf4f479105140cf5ef642b8.bindPopup(popup_32a726c5d6fd7cfceb303105b4dbabca)
+        ;
+
+        
+    
+    
+            circle_marker_0c9a0e58caf4f479105140cf5ef642b8.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Nghệ An</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>5</b><br>CBM: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c51ac08435d811a0a8d2d5f584986463 = L.circleMarker(
+                [21.268, 105.454],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.045931758530184, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_de5b153b5366985fb0e13bff80a2c546 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_dc0f3d394d02353e29ab581190b2a85b = $(`<div id="html_dc0f3d394d02353e29ab581190b2a85b" style="width: 100.0%; height: 100.0%;"><b>Phú Thọ</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 3<br>CBM: 1</div>`)[0];
+                popup_de5b153b5366985fb0e13bff80a2c546.setContent(html_dc0f3d394d02353e29ab581190b2a85b);
+            
+        
+
+        circle_marker_c51ac08435d811a0a8d2d5f584986463.bindPopup(popup_de5b153b5366985fb0e13bff80a2c546)
+        ;
+
+        
+    
+    
+            circle_marker_c51ac08435d811a0a8d2d5f584986463.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Phú Thọ</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>3</b><br>CBM: 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_298d3d01350b8ecf0226a52ee07ea6e9 = L.circleMarker(
+                [15.1194, 109.0422],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.531058617672791, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_c80d1cc03cd95344e463dae646223ca8 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2a3ba94bf5156ea68b49b6cb403c9aad = $(`<div id="html_2a3ba94bf5156ea68b49b6cb403c9aad" style="width: 100.0%; height: 100.0%;"><b>Quảng Ngãi</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 100<br>CBM: 294</div>`)[0];
+                popup_c80d1cc03cd95344e463dae646223ca8.setContent(html_2a3ba94bf5156ea68b49b6cb403c9aad);
+            
+        
+
+        circle_marker_298d3d01350b8ecf0226a52ee07ea6e9.bindPopup(popup_c80d1cc03cd95344e463dae646223ca8)
+        ;
+
+        
+    
+    
+            circle_marker_298d3d01350b8ecf0226a52ee07ea6e9.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Quảng Ngãi</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>100</b><br>CBM: 294
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_521d636cd6ad63f27a1a65f14e492f2a = L.circleMarker(
+                [16.7403, 107.4357],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.6583552055993005, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_a91297de0bc3ff30b39af29612bd51bc = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_66a9e5359e5606f83887a66f294b32ac = $(`<div id="html_66a9e5359e5606f83887a66f294b32ac" style="width: 100.0%; height: 100.0%;"><b>Quảng Trị</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 43<br>CBM: 125</div>`)[0];
+                popup_a91297de0bc3ff30b39af29612bd51bc.setContent(html_66a9e5359e5606f83887a66f294b32ac);
+            
+        
+
+        circle_marker_521d636cd6ad63f27a1a65f14e492f2a.bindPopup(popup_a91297de0bc3ff30b39af29612bd51bc)
+        ;
+
+        
+    
+    
+            circle_marker_521d636cd6ad63f27a1a65f14e492f2a.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Quảng Trị</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>43</b><br>CBM: 125
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ef806f9c8295bfff5b9bb4f4fab5ce66 = L.circleMarker(
+                [10.7769, 106.9509],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28.384076990376204, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_428212d04f1850cb0385a6077bdc3db0 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a0d6819336c4528b04cbb5df30290b63 = $(`<div id="html_a0d6819336c4528b04cbb5df30290b63" style="width: 100.0%; height: 100.0%;"><b>TP. Hồ Chí Minh</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 1462<br>CBM: 2,957</div>`)[0];
+                popup_428212d04f1850cb0385a6077bdc3db0.setContent(html_a0d6819336c4528b04cbb5df30290b63);
+            
+        
+
+        circle_marker_ef806f9c8295bfff5b9bb4f4fab5ce66.bindPopup(popup_428212d04f1850cb0385a6077bdc3db0)
+        ;
+
+        
+    
+    
+            circle_marker_ef806f9c8295bfff5b9bb4f4fab5ce66.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>TP. Hồ Chí Minh</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>1462</b><br>CBM: 2,957
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_03e1b0397182a34968bfe0be32c7b69c = L.circleMarker(
+                [21.567, 106.075],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.030621172353456, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_e3dec1511d6bbae70e10f9e5d8eb0f89 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_06e3cdf9b679f0d282d82c64e4db963c = $(`<div id="html_06e3cdf9b679f0d282d82c64e4db963c" style="width: 100.0%; height: 100.0%;"><b>Thái Nguyên</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 2<br>CBM: 2</div>`)[0];
+                popup_e3dec1511d6bbae70e10f9e5d8eb0f89.setContent(html_06e3cdf9b679f0d282d82c64e4db963c);
+            
+        
+
+        circle_marker_03e1b0397182a34968bfe0be32c7b69c.bindPopup(popup_e3dec1511d6bbae70e10f9e5d8eb0f89)
+        ;
+
+        
+    
+    
+            circle_marker_03e1b0397182a34968bfe0be32c7b69c.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Thái Nguyên</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>2</b><br>CBM: 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ce8f566694de303d9addcc5d64cba991 = L.circleMarker(
+                [16.3333, 107.8333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.826771653543307, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_9d17740b71330ed51e82845a4a2330a0 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7b883027da9258dceebdd451b240dedc = $(`<div id="html_7b883027da9258dceebdd451b240dedc" style="width: 100.0%; height: 100.0%;"><b>Thừa Thiên Huế</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 54<br>CBM: 255</div>`)[0];
+                popup_9d17740b71330ed51e82845a4a2330a0.setContent(html_7b883027da9258dceebdd451b240dedc);
+            
+        
+
+        circle_marker_ce8f566694de303d9addcc5d64cba991.bindPopup(popup_9d17740b71330ed51e82845a4a2330a0)
+        ;
+
+        
+    
+    
+            circle_marker_ce8f566694de303d9addcc5d64cba991.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Thừa Thiên Huế</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>54</b><br>CBM: 255
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_509c5561e9a4fb94e19e5a9e38478ef2 = L.circleMarker(
+                [11.3351, 106.3599],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.02580927384077, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_81b18946fce8f1e31e792687e86312c6 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_43d81c3a37f8a2d84309a522985e7a6e = $(`<div id="html_43d81c3a37f8a2d84309a522985e7a6e" style="width: 100.0%; height: 100.0%;"><b>Tây Ninh</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 67<br>CBM: 54</div>`)[0];
+                popup_81b18946fce8f1e31e792687e86312c6.setContent(html_43d81c3a37f8a2d84309a522985e7a6e);
+            
+        
+
+        circle_marker_509c5561e9a4fb94e19e5a9e38478ef2.bindPopup(popup_81b18946fce8f1e31e792687e86312c6)
+        ;
+
+        
+    
+    
+            circle_marker_509c5561e9a4fb94e19e5a9e38478ef2.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Tây Ninh</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>67</b><br>CBM: 54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d053140b5c8dd49bfb534bd5a88536fd = L.circleMarker(
+                [10.2537, 106.2222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.148293963254593, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_54954cf8b82554875436c2b08fe1719a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f449c6e9f4794d8d2cb215abc96ef6ad = $(`<div id="html_f449c6e9f4794d8d2cb215abc96ef6ad" style="width: 100.0%; height: 100.0%;"><b>Vĩnh Long</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 75<br>CBM: 111</div>`)[0];
+                popup_54954cf8b82554875436c2b08fe1719a.setContent(html_f449c6e9f4794d8d2cb215abc96ef6ad);
+            
+        
+
+        circle_marker_d053140b5c8dd49bfb534bd5a88536fd.bindPopup(popup_54954cf8b82554875436c2b08fe1719a)
+        ;
+
+        
+    
+    
+            circle_marker_d053140b5c8dd49bfb534bd5a88536fd.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Vĩnh Long</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>75</b><br>CBM: 111
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b54cb5243f3a8a2c8c2846dc10a892d2 = L.circleMarker(
+                [16.0544, 108.4522],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.041994750656169, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_d0fbbcb8dc08bbb2cb47d6dc5412e86a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_db3331cbc52d0b59e37f296d8ea06f6f = $(`<div id="html_db3331cbc52d0b59e37f296d8ea06f6f" style="width: 100.0%; height: 100.0%;"><b>Đà Nẵng</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 264<br>CBM: 1,435</div>`)[0];
+                popup_d0fbbcb8dc08bbb2cb47d6dc5412e86a.setContent(html_db3331cbc52d0b59e37f296d8ea06f6f);
+            
+        
+
+        circle_marker_b54cb5243f3a8a2c8c2846dc10a892d2.bindPopup(popup_d0fbbcb8dc08bbb2cb47d6dc5412e86a)
+        ;
+
+        
+    
+    
+            circle_marker_b54cb5243f3a8a2c8c2846dc10a892d2.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Đà Nẵng</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>264</b><br>CBM: 1,435
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4e834ea39c1b151d47e80a28d25614e6 = L.circleMarker(
+                [12.71, 108.4878],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.933945756780402, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_bca6fda38c8689d4e52367ace21935d8 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_989b93b875189e7333146c1433bb9c0d = $(`<div id="html_989b93b875189e7333146c1433bb9c0d" style="width: 100.0%; height: 100.0%;"><b>Đắk Lắk</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 61<br>CBM: 68</div>`)[0];
+                popup_bca6fda38c8689d4e52367ace21935d8.setContent(html_989b93b875189e7333146c1433bb9c0d);
+            
+        
+
+        circle_marker_4e834ea39c1b151d47e80a28d25614e6.bindPopup(popup_bca6fda38c8689d4e52367ace21935d8)
+        ;
+
+        
+    
+    
+            circle_marker_4e834ea39c1b151d47e80a28d25614e6.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Đắk Lắk</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>61</b><br>CBM: 68
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9581565753e47640b4ccdb33926ff7e8 = L.circleMarker(
+                [10.9686, 107.4176],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.959755030621173, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_ed9327bbe253534f6810162649937b52 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2daac194505d57f64e0bcb558dd4978e = $(`<div id="html_2daac194505d57f64e0bcb558dd4978e" style="width: 100.0%; height: 100.0%;"><b>Đồng Nai</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 128<br>CBM: 186</div>`)[0];
+                popup_ed9327bbe253534f6810162649937b52.setContent(html_2daac194505d57f64e0bcb558dd4978e);
+            
+        
+
+        circle_marker_9581565753e47640b4ccdb33926ff7e8.bindPopup(popup_ed9327bbe253534f6810162649937b52)
+        ;
+
+        
+    
+    
+            circle_marker_9581565753e47640b4ccdb33926ff7e8.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Đồng Nai</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>128</b><br>CBM: 186
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3b486e6b549cdc44a350ca2e98b37dbc = L.circleMarker(
+                [10.4938, 105.9382],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2C5F6A", "fillOpacity": 0.82, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.240157480314961, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_d886c4be4276f1e25a0bbcdf0235711f);
+        
+    
+        var popup_13ef92771edee0293ebb26b0b281a8a7 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_e8a88ca65001dd5fb30be2317412be81 = $(`<div id="html_e8a88ca65001dd5fb30be2317412be81" style="width: 100.0%; height: 100.0%;"><b>Đồng Tháp</b><br><span style='color:#2C5F6A'>■</span> TT Orders: 81<br>CBM: 37</div>`)[0];
+                popup_13ef92771edee0293ebb26b0b281a8a7.setContent(html_e8a88ca65001dd5fb30be2317412be81);
+            
+        
+
+        circle_marker_3b486e6b549cdc44a350ca2e98b37dbc.bindPopup(popup_13ef92771edee0293ebb26b0b281a8a7)
+        ;
+
+        
+    
+    
+            circle_marker_3b486e6b549cdc44a350ca2e98b37dbc.bindTooltip(
+                `<div>
+                     <b style='color:#2C5F6A'>Đồng Tháp</b><br><b style='color:#2C5F6A'>Traditional Trade</b><br>Orders: <b>81</b><br>CBM: 37
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_d886c4be4276f1e25a0bbcdf0235711f.addTo(map_70916bafe381b6b2001cdb94dd0c5674);
+        
+    
+            var marker_87ad9be0548b3c6b262f4e05814df621 = L.marker(
+                [11.132, 106.685],
+                {
+}
+            ).addTo(map_70916bafe381b6b2001cdb94dd0c5674);
+        
+    
+            var icon_1af72f63d61f42d5137298914e1691de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_96679f89ce6c407cfd2c77de507e6b99 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_86b9dc783348cc4907b02e18df526be5 = $(`<div id="html_86b9dc783348cc4907b02e18df526be5" style="width: 100.0%; height: 100.0%;">My Phuoc WH (Bình Dương)</div>`)[0];
+                popup_96679f89ce6c407cfd2c77de507e6b99.setContent(html_86b9dc783348cc4907b02e18df526be5);
+            
+        
+
+        marker_87ad9be0548b3c6b262f4e05814df621.bindPopup(popup_96679f89ce6c407cfd2c77de507e6b99)
+        ;
+
+        
+    
+    
+            marker_87ad9be0548b3c6b262f4e05814df621.bindTooltip(
+                `<div>
+                     ★ My Phuoc WH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_87ad9be0548b3c6b262f4e05814df621.setIcon(icon_1af72f63d61f42d5137298914e1691de);
+            
+    
+            var marker_9d358388f18297aec469295a173748ce = L.marker(
+                [10.72, 106.61],
+                {
+}
+            ).addTo(map_70916bafe381b6b2001cdb94dd0c5674);
+        
+    
+            var icon_b81ae5d263724602a38df57190e342e0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6c90e91e5f8a20ad399895bda64daec6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca4968f1bfabf65f439a322b12d5c331 = $(`<div id="html_ca4968f1bfabf65f439a322b12d5c331" style="width: 100.0%; height: 100.0%;">Vinh Loc WH (Bình Chánh, TPHCM)</div>`)[0];
+                popup_6c90e91e5f8a20ad399895bda64daec6.setContent(html_ca4968f1bfabf65f439a322b12d5c331);
+            
+        
+
+        marker_9d358388f18297aec469295a173748ce.bindPopup(popup_6c90e91e5f8a20ad399895bda64daec6)
+        ;
+
+        
+    
+    
+            marker_9d358388f18297aec469295a173748ce.bindTooltip(
+                `<div>
+                     ★ Vinh Loc WH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9d358388f18297aec469295a173748ce.setIcon(icon_b81ae5d263724602a38df57190e342e0);
+            
+    
+            var layer_control_87ad0fadb2ef2d39f7ec80e4690545a3_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_f33329596a2bd67d2dd471d0901786e9,
+                },
+                overlays :  {
+                    "\ud83d\udfe6 Modern Trade" : feature_group_571637f933ce68eb730f6c9a78d446ed,
+                    "\ud83d\udfe9 Traditional Trade" : feature_group_d886c4be4276f1e25a0bbcdf0235711f,
+                },
+            };
+            let layer_control_87ad0fadb2ef2d39f7ec80e4690545a3 = L.control.layers(
+                layer_control_87ad0fadb2ef2d39f7ec80e4690545a3_layers.base_layers,
+                layer_control_87ad0fadb2ef2d39f7ec80e4690545a3_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_70916bafe381b6b2001cdb94dd0c5674);
+
+        
+</script>
+</html>
